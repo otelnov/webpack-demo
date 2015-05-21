@@ -1,0 +1,12 @@
+{
+  "name": "webpack-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node node_modules/.bin/webpack-dev-server --content-base app"
+  },
+  "author": "Oleksandr Telnov <mail@telnov.com> (http://telnov.com/)",
+  "license": "ISC"
+}
