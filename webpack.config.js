@@ -4,6 +4,8 @@ var path = require('path');
 module.exports = {
   context: path.join(__dirname, '/app'),
 
+  devtool: 'eval', //'source-map',
+
   entry: {
     bundle: './index.js',
     user: './components/user',
@@ -29,26 +31,26 @@ module.exports = {
 
   module: {
     loaders: [
-      //{
-      //  test: /\.js$/,
-      //  loader: 'babel',
-      //  exclude: /node_modules/
-      //},
-      //{
-      //  test: /\.js$/,
-      //  loader: 'eslint',
-      //  exclude: /node_modules/
-      //},
-      //{
-      //  test: /\.html$/,
-      //  loader: 'raw',
-      //  exclude: /node_modules/
-      //},
-      //{
-      //  test: /\.css$/,
-      //  loader: 'style!css',
-      //  exclude: /node_modules/
-      //}
+      {
+        test: /\.js$/,
+        loader: 'babel',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.js$/,
+        loader: 'eslint',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.html$/,
+        loader: 'raw',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css',
+        exclude: /node_modules/
+      }
     ]
   }
 };

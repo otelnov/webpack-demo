@@ -1,7 +1,9 @@
-angular.module('app').controller('NewsCtrl', [
-	function () {
-		var vm = this;
-		vm.test = 123;
-		console.log('blablabla');
-	}
-]);
+export default ngModule => {
+	ngModule.controller('NewsCtrl', [
+		function () {
+			let vm = this;
+			vm.test = 123;
+			console.log('blablabla');
+		}
+	]);
+};

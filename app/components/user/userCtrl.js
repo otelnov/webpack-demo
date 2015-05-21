@@ -1,6 +1,8 @@
-angular.module('app').controller('UserCtrl', [
-	function () {
-		var vm = this;
-		vm.test = 123;
-	}
-]);
+export default ngModule => {
+  ngModule.controller('UserCtrl', [
+    function () {
+      let vm = this;
+      vm.test = 123;
+    }
+  ]);
+};
