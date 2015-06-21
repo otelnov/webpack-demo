@@ -1,18 +1,12 @@
 var path = require('path');
 var webpackConfig = require('./webpack.config.js');
-var webpackEntry = webpackConfig.entry;
 
 var entries = [];
 var preprocessors = {};
 
-for (var key in webpackEntry) {
-  if (webpackEntry.hasOwnProperty(key)) {
-    //var val = webpackEntry[key];
-    var fullPath = path.resolve(webpackConfig.context, key + '.js');
-    entries.push(fullPath);
-    preprocessors[fullPath] = ['webpack'];
-  }
-}
+var fullPath = path.resolve(webpackConfig.context, webpackConfig.entry);
+entries.push(fullPath);
+preprocessors[fullPath] = ['webpack'];
 
 module.exports = function (config) {
   config.set({

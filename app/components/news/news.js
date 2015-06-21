@@ -9,10 +9,13 @@ export default ngModule => {
   }]);
 
   ngModule.controller('NewsCtrl', [
-    function () {
+    'NewsFactory',
+    function (newsFactory) {
       let vm = this;
       vm.test = 123;
       console.log('blablabla');
+
+      newsFactory.get((err, data) => vm.news = data.news);
     }
   ]);
 };

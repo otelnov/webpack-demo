@@ -2,8 +2,6 @@ let ngModule = angular.module('app', ['ui.router', 'oc.lazyLoad']);
 
 ngModule.config(['$stateProvider', '$urlRouterProvider',
   function ($stateProvider, $urlRouterProvider) {
-    console.log(5555);
-
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
@@ -32,5 +30,9 @@ ngModule.config(['$stateProvider', '$urlRouterProvider',
       });
   }
 ]);
+
+if (ON_TEST) {
+  require('angular-mocks/angular-mocks');
+}
 
 angular.bootstrap(document, ['app']);

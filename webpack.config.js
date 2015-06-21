@@ -71,4 +71,28 @@ if (process.env.NODE_ENV === 'production') {
   }));
 }
 
+if (process.env.NODE_ENV === 'test') {
+  var fs = require('fs');
+  var data = '';
+
+  for (var key in config.entry) {
+    if (config.entry.hasOwnProperty(key)) {
+      var val = config.entry[key];
+      if (typeof val === 'object') {
+        val.forEach(function (e) {
+          data += 'require(\'' + e + '\');\n\n'
+        })
+      }
+
+      if (typeof val === 'string') {
+        data += 'require(\'' + val + '\');\n\n'
+      }
+    }
+  }
+
+  fs.writeFileSync('./app/test.js', data);
+  config.plugins.splice(1, 1);
+  config.entry = './test.js';
+}
+
 module.exports = config;

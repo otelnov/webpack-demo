@@ -3,6 +3,10 @@
   test - {{vm.test}}
 </div>
 
+<div ng-if="vm.news.length > 0">
+  <p ng-repeat="n in vm.news">{{n}}</p>
+</div>
+
 <div class="image"></div>
 
 <p><a ui-sref="main">home</a></p>
