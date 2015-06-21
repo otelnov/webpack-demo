@@ -1,5 +1,8 @@
-let angular = require('angular');
 let ngModule = angular.module('app');
 
+//if (ON_TEST) {
+//  require('./news.test.js')(ngModule);
+//}
+
 require('./news.css');
-require('./newsCtrl.js')(ngModule);
+require('./news.js')(ngModule);

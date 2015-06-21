@@ -1,3 +1,9 @@
 .news {
   color: red;
 }
+
+.image {
+  height: 400px;
+  background: url('./news.jpg') no-repeat;
+  background-size: contain;
+}

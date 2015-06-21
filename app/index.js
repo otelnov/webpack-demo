@@ -1,43 +1,36 @@
-let angular = require('angular');
-require('angular-ui-router');
-require('oclazyload');
-
-var ngModule = angular.module('app', ['ui.router', 'oc.lazyLoad']);
+let ngModule = angular.module('app', ['ui.router', 'oc.lazyLoad']);
 
 ngModule.config(['$stateProvider', '$urlRouterProvider',
   function ($stateProvider, $urlRouterProvider) {
+    console.log(5555);
 
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
       .state('main', {
         url: '/',
-        template: `<h1>Hello Valor</h1>
-				<p><a ui-sref="news.main">news</a></p>
-				<p><a ui-sref="user.main">user</a></p>`
+        template: require('./components/main.html')
       })
       .state('news', {
         abstract: true,
         template: '<ui-view></ui-view>',
-        resolve: ['$ocLazyLoad', $ocLazyLoad=>$ocLazyLoad.load('./news.js')]
+        resolve: {lazy: ['$ocLazyLoad', $ocLazyLoad => $ocLazyLoad.load('./news.js')]}
       })
       .state('news.main', {
         url: '/news',
-        template: require('./components/news/news.html'),
-        controller: 'NewsCtrl',
-        controllerAs: 'vm'
+        template: '<news-main></news-main>'
       })
 
       .state('user', {
         abstract: true,
         template: '<ui-view></ui-view>',
-        resolve: ['$ocLazyLoad', $ocLazyLoad=>$ocLazyLoad.load('./user.js')]
+        resolve: {lazy: ['$ocLazyLoad', $ocLazyLoad => $ocLazyLoad.load('./user.js')]}
       })
       .state('user.main', {
         url: '/user',
-        template: require('./components/user/user.html'),
-        controller: 'UserCtrl',
-        controllerAs: 'vm'
+        template: '<user-main></user-main>'
       });
   }
 ]);
+
+angular.bootstrap(document, ['app']);
