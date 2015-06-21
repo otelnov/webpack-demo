@@ -8,6 +8,8 @@
 
   "globals": {
     "ON_TEST": 2,
+    "ON_PROD": 2,
+    "ON_DEV": 2,
     "angular": 2
   },
 

@@ -27,4 +27,6 @@ build/Release
 node_modules
 .idea
 .DS_Store
-dist
+build
+dev
+app/test.js

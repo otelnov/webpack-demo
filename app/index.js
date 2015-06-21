@@ -4,6 +4,8 @@ ngModule.config(['$stateProvider', '$urlRouterProvider',
   function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 
+    let hash = window.webpackHash || '';
+
     $stateProvider
       .state('main', {
         url: '/',
@@ -12,7 +14,7 @@ ngModule.config(['$stateProvider', '$urlRouterProvider',
       .state('news', {
         abstract: true,
         template: '<ui-view></ui-view>',
-        resolve: {lazy: ['$ocLazyLoad', $ocLazyLoad => $ocLazyLoad.load('./news.js')]}
+        resolve: {lazy: ['$ocLazyLoad', $ocLazyLoad => $ocLazyLoad.load(`./${hash}news.js`)]}
       })
       .state('news.main', {
         url: '/news',
@@ -22,7 +24,7 @@ ngModule.config(['$stateProvider', '$urlRouterProvider',
       .state('user', {
         abstract: true,
         template: '<ui-view></ui-view>',
-        resolve: {lazy: ['$ocLazyLoad', $ocLazyLoad => $ocLazyLoad.load('./user.js')]}
+        resolve: {lazy: ['$ocLazyLoad', $ocLazyLoad => $ocLazyLoad.load(`./${hash}user.js`)]}
       })
       .state('user.main', {
         url: '/user',

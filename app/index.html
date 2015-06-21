@@ -6,6 +6,9 @@
 </head>
 <body>
   <ui-view></ui-view>
-  <script src="common.js"></script>
+  <script>
+    window.webpackHash = '<%= hash %>';
+  </script>
+  <script src="<%= hash %>common.js"></script>
 </body>
 </html>
